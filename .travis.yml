@@ -1,8 +1,9 @@
+language: generic
 sudo: required
 services:
   - docker
 
-before_build:
+before_install:
   - docker build -t burrmit/react-test -f ./client/Dockerfile.dev ./client
 
 script:
