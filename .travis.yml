@@ -1,12 +1,12 @@
 sudo: required
 services:
-  - dockers
+  - docker
 
 before_build:
-  - docker build -t burrmit/multi-docker -f ./client/Dockerfile.dev ./client
+  - docker build -t burrmit/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true burrmit/multi-docker npm test
+  - docker run -e CI=true burrmit/react-test npm test
 
 after_succes:
   - docker build -t burrmit/multi-client ./client
