@@ -3,10 +3,10 @@ services:
   - dockers
 
 before_build:
-  - docker build -t mitchellburr/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t mitchellburr/multi-docker -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true mitchellburr/react-test npm test
+  - docker run -e CI=true mitchellburr/multi-docker npm test
 
 after_succes:
   - docker build -t mitchellburr/multi-client ./client
