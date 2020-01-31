@@ -21,3 +21,15 @@ after_succes:
   - docker push burrmit/multi-nginx
   - docker push burrmit/multi-server
   - docker push burrmit/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-119744693246"
+  bucket_path: "multi-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
